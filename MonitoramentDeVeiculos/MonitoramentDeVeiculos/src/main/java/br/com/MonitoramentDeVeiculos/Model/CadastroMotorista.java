@@ -24,7 +24,7 @@ public class CadastroMotorista implements Serializable {
     @Column(nullable = false, unique = true, length = 10)
     private Character numero_CNH;
     @Column(nullable = false, unique = false)
-    private Character telefone;
+    private String telefone;
     @Column(unique = true, nullable = false)
     private String email;
 

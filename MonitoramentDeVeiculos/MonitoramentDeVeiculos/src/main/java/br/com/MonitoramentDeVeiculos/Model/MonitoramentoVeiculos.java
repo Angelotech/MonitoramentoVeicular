@@ -1,27 +1,30 @@
 package br.com.MonitoramentDeVeiculos.Model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-@Entity(name = "TB_Teste")
-public class MonitoramentoVeiculos {
+@Entity
+@Table(name = "TB_Monitoramento")
+@SequenceGenerator(name = "monitoramento", sequenceName = "monitoramento", initialValue = 1, allocationSize = 1)
+public class MonitoramentoVeiculos implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(generator = "UUID")
-    private UUID id;
-
-    @Column(unique = true)/*atributo responsavel por passar um valor unico para ser permitido valores iguais */
-    private String username;
-    private String name;
-    private String passoword;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "monitoramente")
+    private Integer id;
+    @Column(nullable = false)
+    private String motorista;
+    @Column(nullable = false)
+    private String veiculos;
+    @Column(nullable = false)
+    private String rota;
+    private Double ativo;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
