@@ -10,8 +10,10 @@ import java.util.List;
 
 @Repository
 public interface VeiculosRepository extends JpaRepository<CadastroVeiculos,Integer> {
-    @Query(value = "select p from CadastroVeiculos p where upper(trim(p.modelo)) like %?1%")
-    List<CadastroVeiculos> buscarmodelo(String name);
+    @Query(value = "select m from CadastroVeiculos m where upper(trim(m.modelo)) like %?1%")
+    List<CadastroVeiculos> buscarmodelo(String modelo);
 
+    @Query(value = "select p from CadastroVeiculo p where upper(trim(p.placa)) like %?1%")
+    List<CadastroVeiculos> buscarplaca(String placa);
 
 }

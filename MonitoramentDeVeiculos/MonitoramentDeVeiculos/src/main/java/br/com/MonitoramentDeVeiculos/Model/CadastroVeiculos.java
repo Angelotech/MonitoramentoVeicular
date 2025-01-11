@@ -17,16 +17,20 @@ public class CadastroVeiculos implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "veiculos")
     private Integer id;
 
-    @Column( unique = true)
+    @Column(unique = true)
     private String modelo;
-    @Column( unique = true)
-    private Character placa;
-    @Column()
-    private String proprietarios;
-    @Column( unique = true)
-    private Character categoria;
-    @Column( unique = true)
-    private String status;
+    @Column(unique = true)
+    private String placa;
+    @Column(nullable = false)
+    private int ano;
+    @Column(nullable = false)
+    private String marca;
+    @Column(nullable = false)
+    private String proprietario;
+    @Column(unique = true)
+    private String categoria;
+    @Column(unique = true)
+    private Double status;
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime created;

@@ -24,7 +24,7 @@ public class CadastroRotas implements Serializable {
     @Column(nullable = false)
     private String estado;
     @Column(nullable = false)
-    private String status;
+    private Double status;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)

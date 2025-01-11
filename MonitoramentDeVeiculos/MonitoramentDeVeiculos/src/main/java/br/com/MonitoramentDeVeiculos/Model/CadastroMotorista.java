@@ -22,11 +22,13 @@ public class CadastroMotorista implements Serializable {
     @Column(nullable = false)
     private String endereco;
     @Column(nullable = false, unique = true, length = 10)
-    private Character numero_CNH;
+    private int numero_CNH;
     @Column(nullable = false, unique = false)
     private String telefone;
     @Column(unique = true, nullable = false)
     private String email;
+    @Column(nullable = false)
+    private double status;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
