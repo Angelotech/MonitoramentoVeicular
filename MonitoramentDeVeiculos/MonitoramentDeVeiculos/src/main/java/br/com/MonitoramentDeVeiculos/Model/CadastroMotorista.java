@@ -13,7 +13,7 @@ public class CadastroMotorista implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "motorista")
-    private Integer id;
+    public Integer id;
 
     @Column(nullable = false, unique = true)
     private String nome;
@@ -34,4 +34,11 @@ public class CadastroMotorista implements Serializable {
     @Column(nullable = false, updatable = false)
     private LocalDateTime created;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

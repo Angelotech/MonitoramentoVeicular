@@ -25,7 +25,7 @@ public class MotoristaController {
         return new ResponseEntity<CadastroMotorista>(cadmotorista, HttpStatus.CREATED);
     }
 
-    /*buscar usuario*/
+    /*buscar motorista*/
 
     @GetMapping(value = "/buscarId")
     @ResponseBody
@@ -46,6 +46,25 @@ public class MotoristaController {
     public ResponseEntity<List<CadastroMotorista>> buscarcnh(@RequestParam(name = "cnh")String cnh){
         List<CadastroMotorista> cnhmotorrista = motoristaRepository.buscarcnh(cnh.trim().toUpperCase());
         return new ResponseEntity<List<CadastroMotorista>>(cnhmotorrista,HttpStatus.OK);
+    }
+
+
+    @PutMapping(value = "/atualizarcaomotorista")
+    @ResponseBody
+    public ResponseEntity<?> atualizacao (@RequestBody CadastroMotorista cadastroMotorista){
+        if (cadastroMotorista.getId()<=0){
+            return new ResponseEntity<String>("valor de Id invalido", HttpStatus.OK);
+        }else{
+            CadastroMotorista atualizacaomotorista = motoristaRepository.saveAndFlush(cadastroMotorista);
+            return new ResponseEntity<CadastroMotorista>(cadastroMotorista,HttpStatus.OK);
+        }
+    }
+
+    @DeleteMapping(value = "/Deletemotorista")
+    @ResponseBody
+    public ResponseEntity<String> delete(@RequestParam Integer idmotor){
+        motoristaRepository.deleteById(idmotor);
+        return new ResponseEntity<String>("exluido com sucesso", HttpStatus.OK);
 
     }
 
