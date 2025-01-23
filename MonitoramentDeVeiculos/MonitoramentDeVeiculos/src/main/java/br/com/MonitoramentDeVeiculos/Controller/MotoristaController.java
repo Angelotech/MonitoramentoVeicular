@@ -43,8 +43,8 @@ public class MotoristaController {
 
     @GetMapping(value = "/buscarCnh")
     @ResponseBody
-    public ResponseEntity<List<CadastroMotorista>> buscarcnh(@RequestParam(name = "cnh")String cnh){
-        List<CadastroMotorista> cnhmotorrista = motoristaRepository.buscarcnh(cnh.trim().toUpperCase());
+    public ResponseEntity<List<CadastroMotorista>> buscarcnh(@RequestParam(name = "cnh")int cnh){
+        List<CadastroMotorista> cnhmotorrista = motoristaRepository.buscarcnh(cnh);
         return new ResponseEntity<List<CadastroMotorista>>(cnhmotorrista,HttpStatus.OK);
     }
 
@@ -67,6 +67,7 @@ public class MotoristaController {
         return new ResponseEntity<String>("exluido com sucesso", HttpStatus.OK);
 
     }
+
 
 
 
