@@ -36,15 +36,15 @@ public class MotoristaController {
 
     @GetMapping(value = "/buscarNome")
     @ResponseBody
-    public ResponseEntity<List<CadastroMotorista>> buscarnomeMotorista(@RequestParam(name = "nome")String nome){
-        List<CadastroMotorista> nomemotorista = motoristaRepository.buscarnome(nome.trim().toUpperCase());
+    public ResponseEntity<List<CadastroMotorista>> buscarnome(@RequestParam(name = "nome")String name){
+        List<CadastroMotorista> nomemotorista = motoristaRepository.buscarnome(name.trim().toUpperCase());
         return new ResponseEntity<List<CadastroMotorista>>(nomemotorista,HttpStatus.OK);
     }
 
     @GetMapping(value = "/buscarCnh")
     @ResponseBody
-    public ResponseEntity<List<CadastroMotorista>> buscarcnh(@RequestParam(name = "cnh")String cnh){
-        List<CadastroMotorista> cnhmotorrista = motoristaRepository.buscarcnh(cnh.trim().toUpperCase());
+    public ResponseEntity<List<CadastroMotorista>> buscarcnh(@RequestParam(name = "cnh")int cnh){
+        List<CadastroMotorista> cnhmotorrista = motoristaRepository.buscarcnh(cnh);
         return new ResponseEntity<List<CadastroMotorista>>(cnhmotorrista,HttpStatus.OK);
     }
 
@@ -67,6 +67,7 @@ public class MotoristaController {
         return new ResponseEntity<String>("exluido com sucesso", HttpStatus.OK);
 
     }
+
 
 
 

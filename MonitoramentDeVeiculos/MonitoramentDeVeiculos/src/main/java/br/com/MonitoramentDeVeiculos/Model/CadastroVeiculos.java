@@ -35,10 +35,19 @@ public class CadastroVeiculos implements Serializable {
     @Column(nullable = false, updatable = false)
     private LocalDateTime created;
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-  
+    public String getPlaca() {
+        return placa;
+    }
 
-
-
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
 }

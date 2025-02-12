@@ -20,6 +20,7 @@ public class MonitoramentDeVeiculosApplication {
 	public static void main(String[] args) {
         SpringApplication.run(MonitoramentDeVeiculosApplication.class, args);
 
+
 	}
 
 }

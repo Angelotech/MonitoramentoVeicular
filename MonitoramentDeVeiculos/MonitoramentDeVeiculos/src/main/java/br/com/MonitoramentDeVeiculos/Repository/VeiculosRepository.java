@@ -11,13 +11,16 @@ import java.util.List;
 
 @Repository
 public interface VeiculosRepository extends JpaRepository<CadastroVeiculos,Integer> {
-    static CadastroUsuario saveAndFlush(CadastroUsuario cadastroUsuario) {
-    }
+
 
     @Query(value = "select m from CadastroVeiculos m where upper(trim(m.modelo)) like %?1%")
     List<CadastroVeiculos> buscarmodelo(String modelo);
 
-    @Query(value = "select p from CadastroVeiculo p where upper(trim(p.placa)) like %?1%")
+    /*
+    @Query(value = "SELECT p FROM CadastroVeiculos p WHERE UPPER(trim(p.placa)) LIKE %?1%")
+    List<CadastroVeiculos> buscarplaca(String placa);
+*/
+    @Query("SELECT p FROM CadastroVeiculos p WHERE UPPER(p.placa) = UPPER(?1)")
     List<CadastroVeiculos> buscarplaca(String placa);
 
 }

@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Repository
+@RestController
 @RequestMapping(value = "/Usuario")
 public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
     /*salvar usuario*/
-    @PostMapping(value = "/salvarusu")
+    @PostMapping(value = "/salvarusuario")
     @ResponseBody
     public ResponseEntity<CadastroUsuario> salvausuario(@RequestBody CadastroUsuario cadastroUsuario){
         CadastroUsuario usuariocadastro = usuarioRepository.save(cadastroUsuario);
@@ -38,21 +38,25 @@ public class UsuarioController {
         List<CadastroUsuario> cpfusuario = usuarioRepository.buscarcpf(usuariocpf.trim().toUpperCase());
         return new ResponseEntity<List<CadastroUsuario>>(cpfusuario, HttpStatus.OK);
     }
-    /*buscar username*/
-    @GetMapping(value = "buscarUsername")
+
+/*
+
+
+    @GetMapping(value = "/buscarUsername")
     @ResponseBody
     public ResponseEntity<List<CadastroUsuario>> buscarUser(@RequestParam(name = "user")String user){
         List<CadastroUsuario> buscarusuario = usuarioRepository.buscarusername(user.trim().toUpperCase());
         return new ResponseEntity<List<CadastroUsuario>>(buscarusuario,HttpStatus.OK);
     }
+*/
     /*atualizar usuario*/
-    @GetMapping(value = "/atualizacao")
+    @PutMapping(value = "/atualizacao")
     @ResponseBody
     public ResponseEntity<?> atualizarusu(@RequestBody CadastroUsuario cadastroUsuario){
         if(cadastroUsuario.getId() <= 0){
             return new ResponseEntity<String>("usuario não encontrado", HttpStatus.OK);
         }else{
-            CadastroUsuario usuario = VeiculosRepository.saveAndFlush(cadastroUsuario);
+            CadastroUsuario usuario = usuarioRepository.saveAndFlush(cadastroUsuario);
             return new ResponseEntity<CadastroUsuario>(usuario,HttpStatus.OK);
         }
     }
