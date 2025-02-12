@@ -1,6 +1,7 @@
 package br.com.MonitoramentDeVeiculos.Repository;
 
 import br.com.MonitoramentDeVeiculos.Model.CadastroMotorista;
+import br.com.MonitoramentDeVeiculos.Model.CadastroRotas;
 import br.com.MonitoramentDeVeiculos.Model.CadastroUsuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,11 +12,12 @@ import java.util.List;
 @Repository
 public interface MotoristaRepository extends JpaRepository<CadastroMotorista,Integer> {
 
-    List<CadastroMotorista> findById();
-
-    @Query(value = "select n from CadastroMotorista n where upper(trim(n.nome)) like %?1%")
+   @Query(value = "select c from CadastroMotorista  c where upper(trim(c.nome)) like %?1%")
     List<CadastroMotorista> buscarnome(String name);
 
-    @Query(value = "select c from CadastroMotorista c where upper(trim(c.cnh)) like %?1%")
-    List<CadastroMotorista> buscarcnh(String cnh);
+    @Query(value = "SELECT c FROM CadastroMotorista c WHERE c.numero_cnh = ?1")
+    List<CadastroMotorista> buscarcnh(int cnh);
+
+    @Query(value = "select c from CadastroRotas c where upper(trim(c.cidade)) like %?1%")
+    List<CadastroRotas> buscarrotas(String cidade);
 }

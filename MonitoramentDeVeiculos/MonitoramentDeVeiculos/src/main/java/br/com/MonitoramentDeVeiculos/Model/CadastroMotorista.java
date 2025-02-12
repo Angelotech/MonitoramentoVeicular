@@ -7,7 +7,8 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Data
-@Entity(name = "tb_motorista")
+@Entity
+@Table(name = "tb_motorista")
 @SequenceGenerator(name = "motorista", sequenceName = "motorista", initialValue = 1, allocationSize = 1)
 public class CadastroMotorista implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -22,7 +23,7 @@ public class CadastroMotorista implements Serializable {
     @Column(nullable = false)
     private String endereco;
     @Column(nullable = false, unique = true, length = 10)
-    private int numero_CNH;
+    private int numero_cnh;
     @Column(nullable = false, unique = false)
     private String telefone;
     @Column(unique = true, nullable = false)
