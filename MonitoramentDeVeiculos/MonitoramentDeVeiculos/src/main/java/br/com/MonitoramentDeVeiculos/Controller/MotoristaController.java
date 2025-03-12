@@ -1,5 +1,4 @@
 package br.com.MonitoramentDeVeiculos.Controller;
-
 import br.com.MonitoramentDeVeiculos.Model.CadastroMotorista;
 import br.com.MonitoramentDeVeiculos.Repository.MotoristaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ public class MotoristaController {
     private MotoristaRepository motoristaRepository;
 
     /*salva usuario*/
-
     @PostMapping(value = "/salvar")
     @ResponseBody
     public ResponseEntity<CadastroMotorista> salvar (@RequestBody CadastroMotorista cadastroMotorista){
@@ -26,7 +24,6 @@ public class MotoristaController {
     }
 
     /*buscar motorista*/
-
     @GetMapping(value = "/buscarId")
     @ResponseBody
     public ResponseEntity<CadastroMotorista> buscarMotoristaid(@RequestParam(name = "idmotorista")Integer idmotorista){
@@ -48,7 +45,6 @@ public class MotoristaController {
         return new ResponseEntity<List<CadastroMotorista>>(cnhmotorrista,HttpStatus.OK);
     }
 
-
     @PutMapping(value = "/atualizarcaomotorista")
     @ResponseBody
     public ResponseEntity<?> atualizacao (@RequestBody CadastroMotorista cadastroMotorista){
@@ -67,14 +63,5 @@ public class MotoristaController {
         return new ResponseEntity<String>("exluido com sucesso", HttpStatus.OK);
 
     }
-
-
-
-
-
-
-
-
-
 
 }

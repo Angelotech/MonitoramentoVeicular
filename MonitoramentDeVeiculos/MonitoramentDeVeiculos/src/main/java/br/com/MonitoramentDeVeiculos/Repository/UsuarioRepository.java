@@ -13,8 +13,8 @@ import java.util.List;
 @Repository
 public interface UsuarioRepository extends JpaRepository<CadastroUsuario,Integer>{
 
-    @Query(value = "select us from CadastroUsuario us where upper (trim(us.username)) like %?1%")
-    List<CadastroUsuario> buscarusername(String username);
+    @Query(value = "select us from CadastroUsuario us where upper (trim(us.nome)) like %?1%")
+    List<CadastroUsuario> buscarnome(String nome);
 
      @Query(value = "select cp from CadastroUsuario cp where upper (trim(cp.cpf)) LIKE %?1%")
     List<CadastroUsuario> buscarcpf(String cpf);

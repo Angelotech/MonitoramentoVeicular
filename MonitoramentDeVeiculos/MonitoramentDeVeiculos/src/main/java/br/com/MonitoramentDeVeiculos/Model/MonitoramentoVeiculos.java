@@ -24,7 +24,7 @@ public class MonitoramentoVeiculos implements Serializable {
     private String veiculos;
     @Column(nullable = false)
     private String rota;
-    private Double ativo;
+    private Boolean ativo;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

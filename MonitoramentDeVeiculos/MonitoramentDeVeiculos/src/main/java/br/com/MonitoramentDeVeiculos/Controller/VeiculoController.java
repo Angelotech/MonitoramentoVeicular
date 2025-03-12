@@ -3,6 +3,7 @@ package br.com.MonitoramentDeVeiculos.Controller;
 import br.com.MonitoramentDeVeiculos.Model.CadastroMotorista;
 import br.com.MonitoramentDeVeiculos.Model.CadastroVeiculos;
 import br.com.MonitoramentDeVeiculos.Repository.VeiculosRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/Veiculos")
 public class VeiculoController {
+    @Autowired
     VeiculosRepository veiculosRepository;
 
     @PostMapping(value = "/Cadastro")

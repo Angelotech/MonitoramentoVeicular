@@ -18,6 +18,4 @@ public interface MotoristaRepository extends JpaRepository<CadastroMotorista,Int
     @Query(value = "SELECT c FROM CadastroMotorista c WHERE c.numero_cnh = ?1")
     List<CadastroMotorista> buscarcnh(int cnh);
 
-    @Query(value = "select c from CadastroRotas c where upper(trim(c.cidade)) like %?1%")
-    List<CadastroRotas> buscarrotas(String cidade);
 }

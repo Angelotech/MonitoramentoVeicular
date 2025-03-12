@@ -29,17 +29,11 @@ public class CadastroMotorista implements Serializable {
     @Column(unique = true, nullable = false)
     private String email;
     @Column(nullable = false)
-    private double status;
-
+    private Boolean status;
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime created;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+
 }

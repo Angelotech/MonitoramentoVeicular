@@ -2,13 +2,10 @@ package br.com.MonitoramentDeVeiculos.Controller;
 
 import br.com.MonitoramentDeVeiculos.Model.CadastroUsuario;
 import br.com.MonitoramentDeVeiculos.Repository.UsuarioRepository;
-import br.com.MonitoramentDeVeiculos.Repository.VeiculosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -39,16 +36,13 @@ public class UsuarioController {
         return new ResponseEntity<List<CadastroUsuario>>(cpfusuario, HttpStatus.OK);
     }
 
-/*
-
-
-    @GetMapping(value = "/buscarUsername")
+    @GetMapping(value = "/buscarnome")
     @ResponseBody
-    public ResponseEntity<List<CadastroUsuario>> buscarUser(@RequestParam(name = "user")String user){
-        List<CadastroUsuario> buscarusuario = usuarioRepository.buscarusername(user.trim().toUpperCase());
+    public ResponseEntity<List<CadastroUsuario>> buscarUser(@RequestParam(name = "nome")String nome){
+        List<CadastroUsuario> buscarusuario = usuarioRepository.buscarnome(nome.trim().toUpperCase());
         return new ResponseEntity<List<CadastroUsuario>>(buscarusuario,HttpStatus.OK);
     }
-*/
+
     /*atualizar usuario*/
     @PutMapping(value = "/atualizacao")
     @ResponseBody
