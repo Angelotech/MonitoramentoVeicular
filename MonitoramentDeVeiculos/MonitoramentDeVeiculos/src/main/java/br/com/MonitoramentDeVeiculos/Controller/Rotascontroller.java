@@ -1,5 +1,4 @@
 package br.com.MonitoramentDeVeiculos.Controller;
-
 import br.com.MonitoramentDeVeiculos.Model.CadastroRotas;
 import br.com.MonitoramentDeVeiculos.Service.RotasService;
 import jakarta.validation.Valid;
@@ -18,24 +17,19 @@ public class Rotascontroller {
 
     @PostMapping(value = "/cadastro")
     @ResponseBody
-    public ResponseEntity<CadastroRotas> Rotascadastradas(@Valid @RequestBody CadastroRotas cadastroRotas) {
+    public ResponseEntity<CadastroRotas> Rotascadastradas(@Valid @RequestBody CadastroRotas cadastroRotas) throws Exception{
         CadastroRotas rotassalvas = rotasService.salvarRotas(cadastroRotas);
         return ResponseEntity.ok(rotassalvas);
     }
 
     @GetMapping(value = "/buscarcidade")
     @ResponseBody
-    public ResponseEntity<List<CadastroRotas>> cidade(@RequestParam(name = "nomecidade") String nomecidade) {
+    public ResponseEntity<List<CadastroRotas>>  listaDeRotas(@RequestParam(name = "nomecidade") String nomecidade) {
         List<CadastroRotas> rota = rotasService.listaDeRotas(nomecidade);
-        return new ResponseEntity<List<CadastroRotas>>(rota, HttpStatus.OK);
+        System.out.println("🌍 Dados retornados para o Controller: " + rota);
+        return ResponseEntity.ok(rota);
     }
 
-    @GetMapping(value = "buscarendereco")
-    @ResponseBody
-    public ResponseEntity<List<CadastroRotas>> endereco(@RequestParam(name = "endereco") String endereco) {
-        List<CadastroRotas> endereco_cadastrado = rotasService.listaDeRotas(endereco);
-        return new ResponseEntity<List<CadastroRotas>>(endereco_cadastrado, HttpStatus.OK);
-    }
 
     /*Uso de <?> no ResponseEntity Como pode haver diferentes tipos de retorno (um objeto CadastroRotas ou uma String de erro), <?> permite mais flexibilidade.*/
   /*  @PutMapping(value = "/atualizarotas")

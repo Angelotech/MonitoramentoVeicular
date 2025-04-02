@@ -3,6 +3,10 @@ package br.com.MonitoramentDeVeiculos.Model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -15,17 +19,22 @@ public class CadastroMotorista implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "motorista")
     public Integer id;
-
+    @NotBlank
     @Column(nullable = false, unique = true)
     private String nome;
+    @NotBlank()
     @Column(nullable = false)
-    private Character categoria_CNH;
+    private String categoria_CNH;
+    @NotBlank
     @Column(nullable = false)
     private String endereco;
-    @Column(nullable = false, unique = true, length = 10)
-    private int numero_cnh;
-    @Column(nullable = false, unique = false)
+    @Max(12)
+    @Column(nullable = false, unique = true, length = 11)
+    private Long numero_cnh;
+    @NotBlank
+    @Column(nullable = false, unique = true)
     private String telefone;
+    @NotBlank
     @Column(unique = true, nullable = false)
     private String email;
     @Column(nullable = false)

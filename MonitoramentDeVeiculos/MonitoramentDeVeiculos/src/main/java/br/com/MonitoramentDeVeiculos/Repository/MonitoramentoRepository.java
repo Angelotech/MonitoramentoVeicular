@@ -10,10 +10,12 @@ import java.util.List;
 
 public interface MonitoramentoRepository extends JpaRepository<MonitoramentoVeiculos,Integer> {
 
-    /*    @Query(value = "SELECT v FROM MonitoramentoVeiculos v WHERE upper(trim(V.MonitoramentoVeiculos)) LIKE %?1%")
-    @Query("SELECT p FROM  MonitoramentoVeiculos p WHERE UPPER(p.MonitoramentoVeiculos) = UPPER(?1)")
+  /* @Query(value = "SELECT v FROM MonitoramentoVeiculos v WHERE upper(trim(V.MonitoramentoVeiculos)) LIKE %?1%")
+ //   @Query("SELECT p FROM  MonitoramentoVeiculos p WHERE UPPER(p.MonitoramentoVeiculos) = UPPER(?1)")
+    @Query(value = "select f from MonitoramentoVeiculos f WHERE upper(trim(f.MonitoramentoVeiculos)) like %?1%")
     List<MonitoramentoVeiculos> buscarmotorista(String motorista);
-*/
+ */
+
 }
 
 

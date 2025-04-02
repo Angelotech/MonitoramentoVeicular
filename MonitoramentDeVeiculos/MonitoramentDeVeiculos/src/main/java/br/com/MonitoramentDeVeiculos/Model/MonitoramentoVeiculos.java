@@ -2,6 +2,7 @@ package br.com.MonitoramentDeVeiculos.Model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -16,16 +17,18 @@ import java.util.UUID;
 public class MonitoramentoVeiculos implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "monitoramente")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "monitoramento")
     private Integer id;
+    @NotBlank
     @Column(nullable = false)
     private String motorista;
+    @NotBlank
     @Column(nullable = false)
     private String veiculos;
+    @NotBlank
     @Column(nullable = false)
     private String rota;
-    private Boolean ativo;
-
+    private Boolean status;
     @CreationTimestamp
     private LocalDateTime createdAt;
 

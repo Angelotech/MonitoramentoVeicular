@@ -3,8 +3,14 @@ package br.com.MonitoramentDeVeiculos.Service;
 import br.com.MonitoramentDeVeiculos.Model.CadastroRotas;
 import br.com.MonitoramentDeVeiculos.Repository.RotasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Objects;
+
+import static org.springframework.web.servlet.function.ServerResponse.status;
 
 @Service
 public class RotasService {
@@ -12,17 +18,22 @@ public class RotasService {
     @Autowired
     private RotasRepository rotasRepository;
 
-    public CadastroRotas salvarRotas(CadastroRotas cadastroRotas) {
-        return rotasRepository.save(cadastroRotas);
+    public CadastroRotas salvarRotas(CadastroRotas cadastroRotas) throws Exception{
+         if (rotasRepository.existsByCidade(cadastroRotas.getCidade())){
+             throw new Exception("cidade ja cadastrada");
+         }else {
+             return rotasRepository.save(cadastroRotas);
+         }
+
     }
 
     public List<CadastroRotas> listaDeRotas(String nomeDasRotas) {
-        return rotasRepository.buscarrotas(nomeDasRotas);
+        List<CadastroRotas> resultado = rotasRepository.buscarrotas(nomeDasRotas);
+        System.out.println("📌 Resultado da busca: " + resultado); // Verifica se os dados vieram
+        return resultado;
     }
 
-    public List<CadastroRotas> localDosenderecos(String local) {
-        return rotasRepository.buscarendereco(local);
-    }
+
 
     public CadastroRotas atualizacao(CadastroRotas novoCadastroRotas) throws Exception {
 
